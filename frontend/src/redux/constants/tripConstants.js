@@ -1,0 +1,4 @@
+export const TRIP_LIST_REQUEST = "TRIP_LIST_REQUEST";
+export const TRIP_LIST_SUCCESS = "TRIP_LIST_SUCCESS";
+export const TRIP_LIST_FAIL = "TRIP_LIST_FAIL";
+export const GET_ONE_TRIP = "GET_ONE_TRIP";

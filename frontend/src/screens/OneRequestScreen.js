@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getOneRequest } from "../redux/actions/requestAction";
 import { Spinner } from "react-bootstrap";
+import Card from "../components/card/Card";
 
-const OneRequestScreen = ({ match }) => {
+const OneRequestScreen = ({ history, match }) => {
   const dispatch = useDispatch();
   const requestTripsList = useSelector((state) => state.requestTripsList);
   const { oneRequest } = requestTripsList;
@@ -15,17 +16,18 @@ const OneRequestScreen = ({ match }) => {
 
   console.log(oneRequest);
   return (
-    <div className="home">
-      <Link className="btn btn-dark my-3" to="/requests">
-        Go Back
-      </Link>
+    <div>
       {oneRequest ? (
-        <div>{oneRequest.origin}</div>
+        <Card obj={oneRequest} />
       ) : (
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       )}
+
+      <Link className="btn btn-dark my-3 " to="/requests">
+        Back to Requests
+      </Link>
     </div>
   );
 };

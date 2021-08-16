@@ -6,7 +6,7 @@ const HomeScreen = () => {
       <img
         src="https://static.vecteezy.com/system/resources/previews/000/144/447/original/carpool-icons-vector.png"
         alt=""
-        style={{ width: "100%" }}
+        style={{ width: "90%" }}
       />
     </div>
   );

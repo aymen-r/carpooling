@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import Message from "../components/Message";
 // import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
-import { login } from "../redux/actions/userActions";
+import { login, getUserDetails } from "../redux/actions/userActions";
 
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState("");
@@ -14,19 +14,21 @@ const LoginScreen = ({ location, history }) => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { error, userDetails } = userLogin;
+  const { error, token, userInformations } = userLogin;
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   useEffect(() => {
-    if (userDetails) {
+    if (token) {
       history.push(redirect);
     }
-  }, [history, userDetails, redirect]);
+  }, [dispatch, history, token, redirect, userInformations]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+
+    userInformations && dispatch(getUserDetails(userInformations._id));
   };
 
   return (
@@ -55,6 +57,7 @@ const LoginScreen = ({ location, history }) => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
+        <br />
         <Button type="submit" variant="primary">
           Sign In
         </Button>

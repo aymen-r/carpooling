@@ -48,7 +48,6 @@ router.put("/:id", async (req, res) => {
         isAdmin: req.body.isAdmin,
         address: req.body.address,
         image: req.body.image,
-        isDriver: req.body.isDriver,
       },
       // { useFindAndModify: false }
       { new: true }
@@ -87,12 +86,11 @@ router.post("/register", async (req, res) => {
       phone: req.body.phone,
       address: req.body.address,
       image: req.body.image,
-      isDriver: req.body.isDriver,
     });
 
-    const respnse = await newUser.save();
+    const response = await newUser.save();
     res.json({
-      respnse,
+      response,
       message: "user created",
     });
   } catch (error) {

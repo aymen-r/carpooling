@@ -5,7 +5,9 @@ const Trip = require("../models/tripModel");
 // get all trips:
 router.get("/", async (req, res) => {
   try {
-    const tripsList = await Trip.find().populate("user", "name -_id");
+    const tripsList = await Trip.find()
+      .populate("user", "name -_id")
+      .sort({ updatedAt: -1 });
     res.send(tripsList);
   } catch (error) {
     res.status(500).json({ success: false });
@@ -15,11 +17,21 @@ router.get("/", async (req, res) => {
 // get trip by id:
 router.get("/:id", async (req, res) => {
   try {
-    const trip = await Trip.findById(req.params.id).populate(
-      "user",
-      "name -_id"
-    );
+    const trip = await Trip.findById(req.params.id).populate("user", "name ");
     res.send(trip);
+  } catch (error) {
+    res.status(500).json({ success: false });
+  }
+});
+
+// get trip by user name
+router.get("/get/:userid", async (req, res) => {
+  try {
+    const trips = await Trip.find({ user: req.params.userid }).populate(
+      "user",
+      "name"
+    );
+    res.status(200).json({ success: true, response: trips });
   } catch (error) {
     res.status(500).json({ success: false });
   }
@@ -37,6 +49,7 @@ router.post("/", async (req, res) => {
       price: req.body.price,
       seats: req.body.seats,
       time: req.body.time,
+      date: req.body.date,
     });
     const respnse = await newTrip.save();
     res.json({

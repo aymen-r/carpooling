@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
 import { getOneTrip } from "../redux/actions/tripActions";
 import { Link } from "react-router-dom";
+import Card from "../components/card/Card";
 
 const OneTripScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -15,17 +16,18 @@ const OneTripScreen = ({ match }) => {
 
   console.log(oneTrip);
   return (
-    <div className="home">
-      <Link className="btn btn-dark my-3" to="/trips">
-        Go Back
-      </Link>
+    <div>
       {oneTrip ? (
-        <div>{oneTrip.origin}</div>
+        <Card obj={oneTrip} />
       ) : (
+        // <div>{oneTrip.origin}</div>
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       )}
+      <Link className="btn btn-dark my-3" to="/trips">
+        Back to Trips
+      </Link>
     </div>
   );
 };

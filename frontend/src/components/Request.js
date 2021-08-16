@@ -1,10 +1,22 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "../css/post.css";
+
 const Post = ({ el }) => {
   return (
     <div style={{ width: "80%", margin: "20px" }}>
-      <Card>
+      <Link to={`/requests/${el._id}`}>
+        <div className="post" style={{ background: "#78b97a" }}>
+          <div className="post-head">
+            <div>
+              {el.origin} ==&gt; {el.destination}
+            </div>
+          </div>
+          <div className="price">{el.seats} seats wanted</div>
+        </div>
+      </Link>
+      {/* <Card>
         <Link to={`/requests/${el._id}`}>
           <Card.Header as="h5">
             {el.origin} ==&gt; {el.destination}
@@ -21,7 +33,7 @@ const Post = ({ el }) => {
             Contact traveller
           </Button>
         </Card.Body>
-      </Card>
+      </Card> */}
     </div>
   );
 };

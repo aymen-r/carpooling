@@ -7,18 +7,27 @@ import { logout } from "../redux/actions/userActions";
 const Header = () => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
-  const { userDetails } = userLogin;
+  const { userInformations } = userLogin;
+
+  // const userInformations = JSON.parse(localStorage.getItem("userInformations"));
+  // console.log(userInformations.name);
 
   const logoutHandler = () => {
     dispatch(logout());
     console.log("logout");
   };
+  // useEffect(() => {
+  //   const userInformations = JSON.parse(
+  //     localStorage.getItem("userInformations")
+  //   );
+  //   console.log(userInformations);
+  // }, [userInformations]);
   return (
     <>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>Carpool</Navbar.Brand>
+            <Navbar.Brand>Carpooling</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -51,19 +60,23 @@ const Header = () => {
                   <i className="fas fa-plus"> </i> Post
                 </button>
               </LinkContainer>
-              {userDetails ? (
+              {userInformations ? (
                 <Dropdown>
                   <Dropdown.Toggle
                     className="btn btn-outline-secondary my-2 my-sm-0 navLnk"
                     variant="secondary"
                     id="dropdown-basic"
                   >
-                    {userDetails.name}
+                    {userInformations.name}
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
                     <LinkContainer to="/profile">
                       <Dropdown.Item>Profile</Dropdown.Item>
+                    </LinkContainer>
+
+                    <LinkContainer to="/my_posts">
+                      <Dropdown.Item>My posts</Dropdown.Item>
                     </LinkContainer>
 
                     <Dropdown.Item onClick={logoutHandler}>

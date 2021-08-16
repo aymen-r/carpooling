@@ -22,5 +22,27 @@ main {
 .title {
   display: flex;
   justify-content: center;
-  padding: 80px;
+  /* padding: 80px; */
+}
+.cont {
+  padding-top: 50px;
+}
+.h2User {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.h2User h1 {
+  letter-spacing: 4px;
+}
+.profile_buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.post1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 77vh;
 }

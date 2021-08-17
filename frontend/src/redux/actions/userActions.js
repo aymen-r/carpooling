@@ -14,6 +14,9 @@ import {
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
   USER_DETAILS_RESET,
+  USER_LIST_REQUEST,
+  USER_LIST_SUCCESS,
+  USER_LIST_FAIL,
 } from "../constants/UserConstants";
 
 // login
@@ -159,6 +162,33 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     dispatch({
       type: USER_UPDATE_FAIL,
       payload: error,
+    });
+    console.log(error);
+  }
+};
+
+// get all users: admin
+export const getAllUsers = () => async (dispatch) => {
+  try {
+    dispatch({ type: USER_LIST_REQUEST });
+    const token = localStorage.getItem("token").replace(/"/g, "");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const { data } = await axios.get(`http://localhost:5000/users`, config);
+    console.log(data);
+
+    dispatch({ type: USER_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: USER_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response.data,
     });
     console.log(error);
   }

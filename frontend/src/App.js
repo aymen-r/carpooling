@@ -18,6 +18,7 @@ import RegisterScreen from "./screens/RegisterScreen";
 import UserPosts from "./screens/UserPostsScreen";
 import UserRequestScreen from "./screens/UserRequestScreen";
 import UserTripScreen from "./screens/UserTripScreen";
+import UsersListScreen from "./screens/UsersListScreen";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="/trips/:id" component={OneTripScreen} />
             <Route path="/requests" component={RequestsScreen} exact />
             <Route path="/requests/:id" component={OneRequestScreen} />
+            <Route path="/admin/userList" component={UsersListScreen} />
             <Route exact path="/" component={HomeScreen} />
           </Switch>
         </Container>

@@ -3,9 +3,11 @@ const router = express.Router();
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const admin = require("../helpers/admin");
 
-// get all users:
-router.get("/", async (req, res) => {
+// get all users / admin:
+router.get("/", admin, async (req, res) => {
+  console.log(req.user.role);
   try {
     let userList = await User.find();
     res.send(userList);
@@ -17,6 +19,7 @@ router.get("/", async (req, res) => {
 
 // get user by id:
 router.get("/:id", async (req, res) => {
+  console.log(req.user.role);
   try {
     let user = await User.findById(req.params.id);
     res.send(user);

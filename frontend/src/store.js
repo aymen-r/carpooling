@@ -20,6 +20,7 @@ import {
   userDetailsReducer,
   userUpdateProfileReducer,
   userRegisterReducer,
+  usersListReducer,
 } from "./redux/reducers/userReducers";
 
 const reducer = combineReducers({
@@ -37,6 +38,7 @@ const reducer = combineReducers({
   updateRequest: updateRequestReducer,
   tripDelete: tripDeleteReducer,
   requestDelete: deleteRequestReducer,
+  usersList: usersListReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInformations")

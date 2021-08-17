@@ -91,6 +91,23 @@ const Header = () => {
                   </button>
                 </LinkContainer>
               )}
+              {userInformations && userInformations.role === "admin" && (
+                <Dropdown>
+                  <Dropdown.Toggle
+                    className="btn btn-outline-secondary my-2 my-sm-0 navLnk"
+                    variant="secondary"
+                    id="adminmenu"
+                  >
+                    Admin
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <LinkContainer to="/admin/userList">
+                      <Dropdown.Item>Users</Dropdown.Item>
+                    </LinkContainer>
+                  </Dropdown.Menu>
+                </Dropdown>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

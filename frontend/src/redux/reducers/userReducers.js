@@ -17,6 +17,7 @@ import {
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
+  CURRENT_USER,
 } from "../constants/UserConstants";
 
 export const userRegisterReducer = (state = {}, action) => {
@@ -42,6 +43,11 @@ export const userLoginReducer = (state = {}, action) => {
         userInformations: action.payload,
         token: action.payload,
       };
+    case CURRENT_USER:
+      return {
+        loading: false,
+        userInformations: action.payload,
+      };
     case USER_LOGIN_FAIL:
       return { loading: false, error: action.payload };
     case USER_LOGOUT:
@@ -60,7 +66,7 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
     case USER_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     case USER_DETAILS_RESET:
-      return {};
+      return { user: {} };
     // case USER_LOGOUT:
     //   return {};
     default:
@@ -68,7 +74,10 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
   }
 };
 
-export const userUpdateProfileReducer = (state = { user: {} }, action) => {
+export const userUpdateProfileReducer = (
+  state = { userInformations: {} },
+  action
+) => {
   switch (action.type) {
     case USER_UPDATE_REQUEST:
       return { loading: true };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Navbar, Nav, Dropdown } from "react-bootstrap";
@@ -9,19 +9,14 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInformations } = userLogin;
 
-  // const userInformations = JSON.parse(localStorage.getItem("userInformations"));
-  // console.log(userInformations.name);
+  // const userInfo = JSON.parse(localStorage.getItem("userInformations"));
+  // console.log(userInfo && userInfo.name);
 
   const logoutHandler = () => {
     dispatch(logout());
     console.log("logout");
   };
-  // useEffect(() => {
-  //   const userInformations = JSON.parse(
-  //     localStorage.getItem("userInformations")
-  //   );
-  //   console.log(userInformations);
-  // }, [userInformations]);
+
   return (
     <>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>

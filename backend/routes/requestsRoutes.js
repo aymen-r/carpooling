@@ -6,7 +6,7 @@ const RequestTrip = require("../models/requestModel");
 router.get("/", async (req, res) => {
   try {
     const requestsList = await RequestTrip.find()
-      .populate("user", "name -_id")
+      .populate("user", "name")
       .sort({ updatedAt: -1 });
     res.send(requestsList);
   } catch (error) {
@@ -19,7 +19,7 @@ router.get("/:id", async (req, res) => {
   try {
     const request = await RequestTrip.findById(req.params.id).populate(
       "user",
-      "name -_id"
+      "name"
     );
     res.send(request);
   } catch (error) {

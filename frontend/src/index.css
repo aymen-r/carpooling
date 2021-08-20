@@ -46,3 +46,8 @@ main {
   justify-content: space-around;
   min-height: 77vh;
 }
+.ONe {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

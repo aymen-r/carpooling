@@ -132,10 +132,6 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_UPDATE_REQUEST });
 
-    // const {
-    //   userLogin: { userInformations },
-    // } = getState();
-
     const userInformations = JSON.parse(
       localStorage.getItem("userInformations")
     );

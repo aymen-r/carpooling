@@ -38,13 +38,11 @@ export const listTrips = () => async (dispatch) => {
   }
 };
 
-export const getUserTrips = (id) => async (dispatch, getState) => {
+export const getUserTrips = (id) => async (dispatch) => {
   try {
     dispatch({ type: USER_TRIPS_REQUEST });
 
-    const {
-      userLogin: { token },
-    } = getState();
+    const token = localStorage.getItem("token").replace(/"/g, "");
 
     const config = {
       headers: {
@@ -85,12 +83,10 @@ export const getOneTrip = (id) => async (dispatch) => {
   }
 };
 
-export const createTrip = (post) => async (dispatch, getState) => {
+export const createTrip = (post) => async (dispatch) => {
   try {
     dispatch({ type: TRIP_CREATE_REQUEST });
-    const {
-      userLogin: { token },
-    } = getState();
+    const token = localStorage.getItem("token").replace(/"/g, "");
 
     console.log(token);
     const config = {

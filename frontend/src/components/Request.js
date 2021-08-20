@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+// import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../css/post.css";
 
@@ -12,6 +12,7 @@ const Post = ({ el }) => {
             <div>
               {el.origin} ==&gt; {el.destination}
             </div>
+            <div>posted by: {el.user.name}</div>
           </div>
           <div className="price">{el.seats} seats wanted</div>
         </div>

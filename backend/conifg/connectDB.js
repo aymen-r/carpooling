@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    let result = await mongoose.connect("mongodb://localhost:27017/carpool", {
+    let result = await mongoose.connect(process.env.ATLAS, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,

@@ -19,6 +19,7 @@ import UserPosts from "./screens/UserPostsScreen";
 import UserRequestScreen from "./screens/UserRequestScreen";
 import UserTripScreen from "./screens/UserTripScreen";
 import UsersListScreen from "./screens/UsersListScreen";
+import UserProfile from "./screens/UserProfile";
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
             <Route path="/register" component={RegisterScreen} />
             <Route path="/post_request" component={RequestTripScreen} />
             <Route path="/login" component={LoginScreen} />
-            <Route path="/profile" component={ProfileScreen} />
+            <Route exact path="/profile" component={ProfileScreen} />
+            <Route path="/profile/:name/:id" component={UserProfile} />
             <Route path="/post_trip" component={PostTripScreen} />
             <Route path="/posts" component={Posts} />
             <Route path="/trips" component={TripsScreen} exact />

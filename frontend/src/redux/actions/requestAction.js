@@ -46,12 +46,10 @@ export const getOneRequest = (id) => async (dispatch) => {
   }
 };
 
-export const createNewRequest = (post) => async (dispatch, getState) => {
+export const createNewRequest = (post) => async (dispatch) => {
   try {
     dispatch({ type: CREATE_REQUEST_TRIP_REQUEST });
-    const {
-      userLogin: { token },
-    } = getState();
+    const token = localStorage.getItem("token").replace(/"/g, "");
     console.log(token);
     const config = {
       headers: {
@@ -74,13 +72,11 @@ export const createNewRequest = (post) => async (dispatch, getState) => {
   }
 };
 
-export const getUserRequests = (id) => async (dispatch, getState) => {
+export const getUserRequests = (id) => async (dispatch) => {
   try {
     dispatch({ type: USER_REQUESTS_REQUEST });
 
-    const {
-      userLogin: { token },
-    } = getState();
+    const token = localStorage.getItem("token").replace(/"/g, "");
 
     const config = {
       headers: {

@@ -6,7 +6,7 @@ const Trip = require("../models/tripModel");
 router.get("/", async (req, res) => {
   try {
     const tripsList = await Trip.find()
-      .populate("user", "name -_id")
+      .populate("user", "name ")
       .sort({ updatedAt: -1 });
     res.send(tripsList);
   } catch (error) {

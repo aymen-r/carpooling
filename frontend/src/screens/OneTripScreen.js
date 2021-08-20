@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Button } from "react-bootstrap";
 import { getOneTrip } from "../redux/actions/tripActions";
 import { Link } from "react-router-dom";
 import Card from "../components/card/Card";
@@ -25,9 +25,12 @@ const OneTripScreen = ({ match }) => {
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       )}
-      <Link className="btn btn-dark my-3" to="/trips">
-        Back to Trips
-      </Link>
+      <div className="ONe">
+        <Button className="btn btn-outline-light my-3">Book this trip</Button>
+        <Link className="btn btn-outline-dark my-3" to="/trips">
+          Back to Trips
+        </Link>
+      </div>
     </div>
   );
 };

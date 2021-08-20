@@ -12,6 +12,7 @@ const Post = ({ el }) => {
             <div>
               {el.origin} ==&gt; {el.destination}
             </div>
+            <div>posted by: {el.user.name}</div>
             <div>{el.price}$</div>
           </div>
           <div className="price">{el.seats} seats vailable</div>

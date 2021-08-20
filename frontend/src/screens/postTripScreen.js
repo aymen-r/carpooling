@@ -16,12 +16,9 @@ const PostTripScreen = () => {
 
   console.log(trip);
   if (error) {
-    console.log(error.response.data);
+    console.log(error.response.data.message);
   }
 
-  if (!token) {
-    history.push("/login");
-  }
   const [newTrip, setNewTrip] = useState({
     user: userInformations && userInformations._id,
     origin: "",
@@ -35,11 +32,14 @@ const PostTripScreen = () => {
   });
 
   useEffect(() => {
+    if (!token) {
+      history.push("/login");
+    }
     if (success) {
       dispatch({ type: TRIP_CREATE_RESET });
       history.push("/trips");
     }
-  }, [history, success, dispatch]);
+  }, [history, success, dispatch, token]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -48,7 +48,7 @@ const PostTripScreen = () => {
 
   const myFunction = () => {
     if (error) {
-      alert(error.response.data);
+      alert(error.response.data.message);
     }
   };
   const handleSubmit = (e) => {

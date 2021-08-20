@@ -18,9 +18,6 @@ const RequestTripScreen = () => {
     console.log(error);
   }
 
-  if (!token) {
-    history.push("/login");
-  }
   const [newReq, setNewReq] = useState({
     user: userInformations && userInformations._id,
     origin: "",
@@ -32,11 +29,14 @@ const RequestTripScreen = () => {
   });
 
   useEffect(() => {
+    if (!token) {
+      history.push("/login");
+    }
     if (success) {
       dispatch({ type: CREATE_REQUEST_TRIP_RESET });
       history.push("/requests");
     }
-  }, [history, success, dispatch]);
+  }, [history, success, dispatch, token]);
 
   const handleChange = (e) => {
     e.preventDefault();

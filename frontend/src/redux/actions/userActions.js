@@ -17,6 +17,9 @@ import {
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
+  USER_DELETE_REQUEST,
+  USER_DELETE_SUCCESS,
+  USER_DELETE_FAIL,
 } from "../constants/UserConstants";
 
 // login
@@ -72,7 +75,7 @@ export const register = (user) => async (dispatch) => {
 
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
 
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+    // dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
     // const { email, password } = data.response;
     // login(email, password);
     // localStorage.setItem("token", JSON.stringify(data.token));
@@ -187,5 +190,37 @@ export const getAllUsers = () => async (dispatch) => {
           : error.response.data,
     });
     console.log(error);
+  }
+};
+
+// delete a trip
+
+export const deleteUser = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_DELETE_REQUEST });
+
+    const token = localStorage.getItem("token").replace(/"/g, "");
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    await axios.delete(`http://localhost:5000/users/${id}`, config);
+
+    dispatch({ type: USER_DELETE_SUCCESS });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "the user is not authorized") {
+      dispatch(logout());
+    }
+    dispatch({
+      type: USER_DELETE_FAIL,
+      payload: message,
+    });
   }
 };

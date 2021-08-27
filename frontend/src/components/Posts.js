@@ -14,7 +14,7 @@ const Posts = () => {
             <Card.Header
               as="h5"
               style={{
-                color: "#ff5722",
+                color: "#4b37fc80",
                 fontSize: "25px",
                 fontWeight: "bold",
               }}
@@ -36,7 +36,11 @@ const Posts = () => {
           <Card>
             <Card.Header
               as="h5"
-              style={{ color: "green", fontSize: "25px", fontWeight: "bold" }}
+              style={{
+                color: "#fc65378a",
+                fontSize: "25px",
+                fontWeight: "bold",
+              }}
             >
               Post a request
             </Card.Header>

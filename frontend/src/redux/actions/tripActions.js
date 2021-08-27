@@ -173,3 +173,17 @@ export const deleteTrip = (id) => async (dispatch) => {
     });
   }
 };
+
+// export const bookTrip = (id) => async (dispatch, getState) => {
+//   try {
+//     const { data } = await axios.get(`http://localhost:5000/trips/${id}`);
+//     console.log("data: ", data);
+//     dispatch({ type: BOOKING_TRIP, payload: data });
+//     localStorage.setItem(
+//       "bookedTrips",
+//       JSON.stringify(getState().booking.bookedTrips)
+//     );
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

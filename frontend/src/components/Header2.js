@@ -1,4 +1,5 @@
 import React from "react";
+import "./header.css";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Navbar, Nav, Dropdown } from "react-bootstrap";
@@ -9,9 +10,6 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInformations } = userLogin;
 
-  const userInfo = JSON.parse(localStorage.getItem("userInformations"));
-  console.log(userInfo && userInfo.name);
-
   const logoutHandler = () => {
     dispatch(logout());
     console.log("logout");
@@ -19,56 +17,31 @@ const Header = () => {
 
   return (
     <>
-      {/* <ul class="nav nav-pills">
-        <li class="nav-item">
-          <LinkContainer class="nav-link">Active</LinkContainer>
-        </li>
-        <li class="nav-item dropdown">
-          <LinkContainer
-            class="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Dropdown
-          </LinkContainer>
-          <div class="dropdown-menu">
-            <LinkContainer class="dropdown-item">Action</LinkContainer>
-            <LinkContainer class="dropdown-item">Another action</LinkContainer>
-            <LinkContainer class="dropdown-item">
-              Something else here
-            </LinkContainer>
-            <div class="dropdown-divider"></div>
-            <LinkContainer class="dropdown-item">Separated link</LinkContainer>
-          </div>
-        </li>
-        <li class="nav-item">
-          <LinkContainer class="nav-link">Link</LinkContainer>
-        </li>
-        <li class="nav-item">
-          <LinkContainer class="nav-link disabled">Disabled</LinkContainer>
-        </li>
-      </ul> */}
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar className="navbar" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>Carpooling</Navbar.Brand>
+            <Navbar.Brand>
+              <span className="Logo">Carpooling</span>
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <LinkContainer className=" navLnk" to="/about">
-                <Nav.Link>About</Nav.Link>
+              <LinkContainer to="/about">
+                <Nav.Link>
+                  <button className="btn btn-outline-primary my-2 my-sm-0 navLnk">
+                    About
+                  </button>
+                </Nav.Link>
               </LinkContainer>
 
               <Dropdown>
                 <Dropdown.Toggle
-                  className=" navLnk"
+                  className="btn btn-outline-primary my-2 my-sm-0 navLnk"
                   variant="primary"
                   id="dropdown-basic"
                 >
-                  <i className="fas fa-search"></i> Find
+                  <i className="fas fa-search"></i>Find
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
@@ -81,16 +54,17 @@ const Header = () => {
                 </Dropdown.Menu>
               </Dropdown>
 
-              <LinkContainer className="navLnk  " to="/posts">
-                <button className="btn btn-outline-warning my-2 my-sm-0">
-                  <i className="fas fa-plus"> </i> Post
+              <LinkContainer to="/posts">
+                <button className="btn btn-outline-primary my-2 my-sm-0 navLnk">
+                  <i className="fas fa-plus"></i>Post
                 </button>
               </LinkContainer>
               {userInformations ? (
                 <Dropdown>
                   <Dropdown.Toggle
-                    className="btn btn-outline-secondary my-2 my-sm-0 navLnk"
-                    variant="secondary"
+                    // className="btn btn-outline-secondary my-2 my-sm-0 navLnk"
+                    className="btn btn-outline-primary my-2 my-sm-0 navLnk"
+                    variant="primary"
                     id="dropdown-basic"
                   >
                     {userInformations.name}
@@ -115,8 +89,8 @@ const Header = () => {
                   </Dropdown.Menu>
                 </Dropdown>
               ) : (
-                <LinkContainer className="navLnk  " to="/login">
-                  <button className="btn btn-outline-secondary my-2 my-sm-0">
+                <LinkContainer to="/login">
+                  <button className="btn btn-outline-primary my-2 my-sm-0 navLnk">
                     Sign in
                   </button>
                 </LinkContainer>

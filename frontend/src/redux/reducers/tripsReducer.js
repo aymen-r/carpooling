@@ -18,6 +18,8 @@ import {
   TRIP_DELETE_REQUEST,
   TRIP_DELETE_SUCCESS,
   TRIP_DELETE_FAIL,
+  BOOKING_TRIP,
+  UNBOOK_TRIP,
 } from "../constants/tripConstants";
 
 export const tripsListReducer = (
@@ -109,3 +111,36 @@ export const tripDeleteReducer = (state = {}, action) => {
       return state;
   }
 };
+
+// export const bookingReducer = (state = { bookedTrips: [] }, action) => {
+//   switch (action.type) {
+//     case BOOKING_TRIP:
+//       const trip = action.payload;
+
+//       const existBooking = state.bookedTrips.find((el) => el._id === trip._id);
+
+//       if (existBooking) {
+//         return {
+//           ...state,
+//           bookedTrips: state.bookedTrips.map((el) =>
+//             el._id === existBooking._id ? trip : el
+//           ),
+//         };
+//       } else {
+//         return {
+//           ...state,
+//           bookedTrips: [...state.bookedTrips, trip],
+//         };
+//       }
+//     case UNBOOK_TRIP:
+//       return {
+//         ...state,
+//         bookedTrips: state.bookedTrips.filter(
+//           (el) => el._id !== action.payload
+//         ),
+//       };
+
+//     default:
+//       return state;
+//   }
+// };

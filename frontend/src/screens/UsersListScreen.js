@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
 import { Button, Table, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers } from "../redux/actions/userActions";
+import { getAllUsers, deleteUser } from "../redux/actions/userActions";
 
 const UsersListScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -22,6 +21,12 @@ const UsersListScreen = ({ history }) => {
     }
   }, [dispatch, token, history]);
 
+  const handleDelete = async (id) => {
+    if (window.confirm("you want to delete this user?")) {
+      await dispatch(deleteUser(id));
+    }
+    dispatch(getAllUsers());
+  };
   return (
     <div>
       <h1>Users</h1>
@@ -56,14 +61,17 @@ const UsersListScreen = ({ history }) => {
                   )}
                 </td>
                 <td>
-                  <Link to={`/user/${user._id}/edit`}>
-                    <Button variant="light" className="btn-sm">
-                      <i className="fas fa-edit"></i>
-                    </Button>
-                    <Button className="btn-outline-danger btn-sm">
-                      <i className="fas fa-trash"></i>
-                    </Button>
-                  </Link>
+                  {/* <Link to={`/user/${user._id}/edit`}> */}
+                  <Button variant="light" className="btn-sm">
+                    <i className="fas fa-edit"></i>
+                  </Button>
+                  <Button
+                    className="btn-outline-danger btn-sm"
+                    onClick={() => handleDelete(user._id)}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </Button>
+                  {/* </Link> */}
                 </td>
               </tr>
             ))}

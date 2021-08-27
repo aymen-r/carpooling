@@ -2,11 +2,11 @@ import React from "react";
 
 const HomeScreen = () => {
   return (
-    <div className="main">
+    <div className="min-main-img">
       <img
         src="https://static.vecteezy.com/system/resources/previews/000/144/447/original/carpool-icons-vector.png"
         alt=""
-        style={{ width: "90%" }}
+        style={{ width: "1100px", height: "600px" }}
       />
     </div>
   );

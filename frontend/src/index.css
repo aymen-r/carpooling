@@ -9,13 +9,19 @@ main {
   padding: 123px 24px;
 }
 .home {
-  padding-top: 20px;
+  /* padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 50vh; */
+
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
 }
+
 .navLnk {
   margin: 10px;
 }
@@ -50,4 +56,30 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+.booking-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px;
+  background: rgb(156, 156, 156);
+  margin: 15px;
+  color: black;
+  border-radius: 10px;
+}
+.home {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+}
+.carpooling-parag {
+  background-color: #75b1ff4b;
+  border: 1px solid #378cfc80;
+  border-radius: 15px;
+  padding: 45px;
+  margin: 50px;
+}
+.carpooling {
+  font-size: 30px;
 }

@@ -18,10 +18,12 @@ app.use(errorHandler);
 const usersRoutes = require("./routes/usersRoutes");
 const tripRoutes = require("./routes/tripsRoutes");
 const requestTripRoutes = require("./routes/requestsRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 
 app.use("/users", usersRoutes);
 app.use("/trips", tripRoutes);
 app.use("/request_trip", requestTripRoutes);
+app.use("/bookings", bookingRoutes);
 
 app.listen(5000, () => {
   console.log("the server is listening on port 5000");

@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { Spinner, Alert, Button } from "react-bootstrap";
+import { Spinner, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { getUserDetails } from "../redux/actions/userActions";
 import { USER_DETAILS_RESET } from "../redux/constants/UserConstants";
-// import "../profile2.css";
+import "../profile2.css";
 
 const UserProfile = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -43,19 +42,23 @@ const UserProfile = ({ history, match }) => {
             </header>
 
             <div className="profile-bio">
-              <p>Email: {user.email}</p>
-              <p>Phone Number: {user.phone}</p>
+              <p>
+                <i class="fas fa-envelope-open-text"></i> {user.email}
+              </p>
+              <p>
+                <i class="fas fa-phone-alt"></i>: {user.phone}
+              </p>
             </div>
           </div>
           {/* <Link to="/trips"> */}
-          <Button
+          {/* <Button
             onClick={() => {
               history.goBack();
             }}
           >
             {" "}
             go back
-          </Button>
+          </Button> */}
         </>
       )}
     </>

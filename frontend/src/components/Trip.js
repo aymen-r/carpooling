@@ -1,42 +1,48 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 import "../css/post.css";
 
 const Post = ({ el }) => {
   return (
-    <div style={{ width: "80%", margin: "20px" }}>
-      <Link to={`/trips/${el._id}`}>
+    <div>
+      {el.user && (
         <div className="post">
-          <div className="post-head">
-            <div>
-              {el.origin} ==&gt; {el.destination}
+          <div className="courses-container">
+            <div className="course">
+              <div className="course-preview">
+                <h2>
+                  posted by:
+                  <br />
+                  {el.user.name}
+                </h2>
+              </div>
+              <div className="course-info">
+                <div className="progress-container"></div>
+                <h6 className="price">{el.seats} seats available</h6>
+                <h2>
+                  {el.origin}
+                  <img
+                    src="https://snipstock.com/assets/cdn/png/1eca89145511beba3f0fdbc4c39bfd31.png"
+                    style={{
+                      width: "50px",
+                      height: "20px",
+                    }}
+                    alt=""
+                  />
+                  {el.destination}
+                </h2>
+                <div className="price">{el.price}$</div>
+                <br />
+                <br />
+                <br />
+                <Link to={`/trips/${el._id}`}>
+                  <button className="btn1">See more</button>
+                </Link>
+              </div>
             </div>
-            <div>posted by: {el.user.name}</div>
-            <div>{el.price}$</div>
           </div>
-          <div className="price">{el.seats} seats vailable</div>
         </div>
-      </Link>
-
-      {/* <Card>
-        <Link to={`/trips/${el._id}`}>
-          <Card.Header as="h5">
-            {el.origin} ==&gt; {el.destination}
-          </Card.Header>
-        </Link>
-        <Card.Body>
-          <Card.Title>{el.user.name}</Card.Title>
-          <Card.Text>Description: {el.description}</Card.Text>
-          <Card.Text>Available seats: {el.seats}</Card.Text>
-
-          <Card.Text> Posted on: {el.time}</Card.Text>
-
-          <Button className="btn-outline-info" variant="info">
-            Book this trip
-          </Button>
-        </Card.Body>
-      </Card> */}
+      )}
     </div>
   );
 };

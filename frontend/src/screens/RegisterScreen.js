@@ -29,12 +29,14 @@ const RegisterScreen = ({ location, history }) => {
     }
   }, [history, userInformations, redirect]);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
     } else {
-      dispatch(register({ name, email, password, phone, address, gender }));
+      await dispatch(
+        register({ name, email, password, phone, address, gender })
+      );
       dispatch(login(email, password));
     }
   };

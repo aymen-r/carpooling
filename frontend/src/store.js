@@ -7,6 +7,7 @@ import {
   UserTripsReducer,
   tripUpdateReducer,
   tripDeleteReducer,
+  // bookingReducer,
 } from "./redux/reducers/tripsReducer";
 import {
   requestTripsListReducer,
@@ -21,7 +22,13 @@ import {
   userUpdateProfileReducer,
   userRegisterReducer,
   usersListReducer,
+  usersDeleteReducer,
 } from "./redux/reducers/userReducers";
+import {
+  bookingDeleteReducer,
+  bookTripReducer,
+  UserBookingsReducer,
+} from "./redux/reducers/bookingReducer";
 
 const reducer = combineReducers({
   tripsList: tripsListReducer,
@@ -39,7 +46,16 @@ const reducer = combineReducers({
   tripDelete: tripDeleteReducer,
   requestDelete: deleteRequestReducer,
   usersList: usersListReducer,
+  UserBooking: UserBookingsReducer,
+  bookTrip: bookTripReducer,
+  bookingDelete: bookingDeleteReducer,
+  usersDelete: usersDeleteReducer,
+  // booking: bookingReducer,
 });
+
+// const bookedTripsFromStorage = localStorage.getItem("bookedTrips")
+//   ? JSON.parse(localStorage.getItem("bookedTrips"))
+//   : [];
 
 const userInfoFromStorage = localStorage.getItem("userInformations")
   ? JSON.parse(localStorage.getItem("userInformations"))
@@ -50,6 +66,9 @@ const userTokenFromStorage = localStorage.getItem("token")
   : null;
 
 const initialState = {
+  // booking: {
+  //   bookedTrips: bookedTripsFromStorage,
+  // },
   userLogin: {
     userInformations: userInfoFromStorage,
     token: userTokenFromStorage,

@@ -15,8 +15,8 @@ const RequestsScreen = () => {
 
   console.log(requests);
   return (
-    <div className="home">
-      <h1>List of requests</h1>
+    <div className="posts">
+      <h1 style={{ margin: "20px", textAlign: "center" }}>List of requests</h1>
       {requests ? (
         requests.map((el) => <Request key={el._id} el={el} />)
       ) : (

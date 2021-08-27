@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { Switch, Route } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/Header2";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Posts from "./components/Posts";
@@ -20,6 +20,7 @@ import UserRequestScreen from "./screens/UserRequestScreen";
 import UserTripScreen from "./screens/UserTripScreen";
 import UsersListScreen from "./screens/UsersListScreen";
 import UserProfile from "./screens/UserProfile";
+import BookingScreen from "./screens/BookingScreen";
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
               component={UserRequestScreen}
             />
             <Route path="/my_posts/trips/:id" component={UserTripScreen} />
+            {/* <Route path="/my_booked_trips/:id?" component={UserBookedTrips} /> */}
+            <Route path="/my_booked_trips" component={BookingScreen} />
             <Route path="/about" component={About} />
             <Route path="/register" component={RegisterScreen} />
             <Route path="/post_request" component={RequestTripScreen} />

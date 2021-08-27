@@ -15,8 +15,8 @@ const TripsScreen = () => {
 
   console.log(trips);
   return (
-    <div className="home">
-      <h1>List of trips</h1>
+    <div className="posts">
+      <h1 style={{ margin: "20px", textAlign: "center" }}>List of trips</h1>
       {trips ? (
         trips.map((el) => <Trip key={el._id} el={el} />)
       ) : (
